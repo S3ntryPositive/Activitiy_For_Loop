@@ -1,35 +1,33 @@
 window.addEventListener("load", addListener);
 
-var Grade_Input, Sum, Average, GPA;
+var input, grade, Average, gpa;
+var sum = 0;
 
 function addListener()
 {
-    document.getElementById("btnsubmit").addEventListener("click", CheckInput);
+	document.getElementById("btnSubmit").addEventListener("click", CheckInput);
 }
 
 function CheckInput()
 {
-    var Grade_Input = document.getElementById("input_number_grades").value;
-    if(Grade_Input = "")
-    {
-        alert("Enter Input");
-    }
-
-    else
-    {
-        Calculate();
-    }
+	input = document.getElementById("input_grades").value;
+	if(input == "")
+		{
+			alert("No Input Found");
+		}
+	else
+	{
+		Average(input)
+	}
 }
 
-function Calculate()
+function Average(amount)
 {
-    var Grade_Input = document.getElementById("input_number_grades").value;
-    var i = 0;
-    while(i<=Grade_Input)
-    {
-        document.getElementById("lblgrades").textContent = "Enter Each Grade And Submit"
-        var Sum = Sum + Grade_Input;
-        i++;
-    }
-    document.getElementById("lbl_grade_average").textContent = Sum
+	document.getElementById("Label_Amount_Grades").textContent = "Grades"
+	document.getElementById("input_grades").value = null;
+	document.getElementById("input_grades").focus()
+	for(i = 1; i<=amount; i++)
+		{
+			sum = sum 
+		}
 }
