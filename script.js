@@ -1,33 +1,70 @@
-window.addEventListener("load", addListener);
-
-var input, grade, Average, gpa;
-var sum = 0;
-
-function addListener()
-{
-	document.getElementById("btnSubmit").addEventListener("click", CheckInput);
+window.addEventListener("load",buttons);
+var gradenumber = ""
+var sum = 0
+var count = 0
+var Average, gpa, grade;
+var inputGrades
+function buttons()
+{	
+	document.getElementById("btnsubmit").addEventListener("click",CheckInput);
 }
-
 function CheckInput()
 {
-	input = document.getElementById("input_grades").value;
-	if(input == "")
-		{
-			alert("No Input Found");
-		}
+	if(gradenumber == "")
+	{
+		NumberOfGrades()
+	}
 	else
 	{
-		Average(input)
+		grade = document.getElementById("inputGrades").value;
+		GradeAverageAndGPA(gradenumber)
 	}
 }
-
-function Average(amount)
+function NumberOfGrades()
 {
-	document.getElementById("Label_Amount_Grades").textContent = "Grades"
-	document.getElementById("input_grades").value = null;
-	document.getElementById("input_grades").focus()
-	for(i = 1; i<=amount; i++)
+    inputGrades = document.getElementById("inputGrades")
+
+	gradenumber = inputGrades.value;
+	var check = parseFloat(gradenumber) % 1;
+	if (gradenumber == "" || check !== 0 )
 		{
-			sum = sum 
+			alert("Input The Correct Number Of Grades/Grade Value");
 		}
+	else
+		{
+			gradenumber = parseInt(gradenumber);
+			inputGrades.value = null;
+			inputGrades.focus();
+			document.getElementById("labelNumberOfGrades").textContent = "Grades: ";
+		}
+}
+function GradeAverageAndGPA(Number)
+{
+
+    inputGrades = document.getElementById("inputGrades")
+	
+	if(grade > 100 || grade < 0)
+	{
+	    alert("Input The Correct Number Of Grades/Grade Value"); 
+		inputGrades.value = ""; 
+		inputGrades.focus();
+	}
+	else
+	{
+		for(let i = 1; i <= Number; i++)
+		{
+			sum = sum + parseFloat(grade);
+			inputGrades.value = "";
+	    	inputGrades.focus()	
+	    	break;
+		}
+		count = count + 1; 
+		if(count == Number)
+		{
+			Average = sum/Number; 
+			gpa = Average/25; 
+		}
+	}
+	document.getElementById("labelgpa").textContent = gpa;
+	document.getElementById("labelaverage_input").textContent = Average;
 }
